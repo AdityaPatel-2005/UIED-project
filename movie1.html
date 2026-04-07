@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Doctor Strange - Booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container movie-details-bg">
+        
+        <div class="hero-image-overlay" style="background-image: url('fullposter1.png');"></div>
+
+        <header class="movie-header-actions">
+            <a href="index.html" class="icon-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </a>
+            <span class="tiny-tagline">I T &nbsp; B E G I N S</span>
+            <button class="icon-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>
+            </button>
+        </header>
+
+        <main class="movie-info-container">
+            <h1 class="movie-title">Doctor Strange</h1>
+            <p class="movie-subtitle">in the Multiverse of Madness</p>
+            <p class="movie-synopsis">
+                Dr. Stephen Strange casts a forbidden spell that opens the doorway to the multiverse, including alternate versions of... <span class="read-more">read more</span>
+            </p>
+
+            <div class="datetime-section">
+                <h3>Select date and time</h3>
+                <div class="picker-arch">
+                    <div class="picker-col col-level-1">
+                        <div class="date-card">
+                            <span class="day">Thu</span>
+                            <span class="date">21</span>
+                        </div>
+                        <div class="time-card">16:00</div>
+                    </div>
+                    <div class="picker-col col-level-2">
+                        <div class="date-card">
+                            <span class="day">Fri</span>
+                            <span class="date">22</span>
+                        </div>
+                        <div class="time-card">17:00</div>
+                    </div>
+                    <div class="picker-col col-level-3">
+                        <div class="date-card">
+                            <span class="day">Sat</span>
+                            <span class="date">23</span>
+                        </div>
+                        <div class="time-card">18:00</div>
+                    </div>
+                    <div class="picker-col col-level-2">
+                        <div class="date-card">
+                            <span class="day">Sun</span>
+                            <span class="date">24</span>
+                        </div>
+                        <div class="time-card">19:00</div>
+                    </div>
+                    <div class="picker-col col-level-1">
+                        <div class="date-card">
+                            <span class="day">Mon</span>
+                            <span class="date">25</span>
+                        </div>
+                        <div class="time-card">20:00</div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="reservation-btn" class="reservation-btn" disabled>Reservation</button>
+        </main>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const dateCards = document.querySelectorAll('.date-card');
+            const timeCards = document.querySelectorAll('.time-card');
+            const reservationBtn = document.getElementById('reservation-btn');
+            
+            let selectedDateText = '';
+            let selectedTimeText = '';
+
+            function checkReservationState() {
+                if (selectedDateText !== '' && selectedTimeText !== '') {
+                    reservationBtn.disabled = false; 
+                    reservationBtn.classList.add('active'); 
+                }
+            }
+
+            dateCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    dateCards.forEach(c => c.classList.remove('active-date'));
+                    card.classList.add('active-date');
+                    const day = card.querySelector('.day').innerText;
+                    const date = card.querySelector('.date').innerText;
+                    selectedDateText = `April ${date}, 2022`; 
+                    checkReservationState();
+                });
+            });
+
+            timeCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    timeCards.forEach(c => c.classList.remove('active-time'));
+                    card.classList.add('active-time');
+                    const rawTime = card.innerText;
+                    const hour = parseInt(rawTime.split(':')[0]);
+                    const suffix = hour >= 12 ? 'p.m.' : 'a.m.';
+                    const formattedHour = hour > 12 ? hour - 12 : hour;
+                    selectedTimeText = `${formattedHour} ${suffix}`;
+                    checkReservationState();
+                });
+            });
+
+            reservationBtn.addEventListener('click', () => {
+                if (!reservationBtn.disabled) {
+                    localStorage.setItem('movieDate', selectedDateText);
+                    localStorage.setItem('movieTime', selectedTimeText);
+                    window.location.href = 'seats.html'; 
+                }
+            });
+        });
+    </script>
+</body>
+</html>

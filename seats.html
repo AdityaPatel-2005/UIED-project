@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Doctor Strange - Seats</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container seats-bg">
+        
+        <header class="seats-header">
+            <a href="movie1.html" class="icon-btn">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            </a>
+            <h2>Choose Seats</h2>
+            <button class="icon-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            </button>
+        </header>
+
+        <div class="screen-container">
+            <svg class="screen-arc" viewBox="0 0 300 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30 35 Q 150 -20 270 35" stroke="#ff2a85" stroke-width="5" stroke-linecap="round"/>
+            </svg>
+        </div>
+
+        <main class="seats-grid">
+            <div class="seat-row split-row">
+                <div class="seat-group">
+                    <div class="seat reserved"></div>
+                    <div class="seat reserved"></div>
+                    <div class="seat available" data-seat="A3"></div>
+                </div>
+                <div class="seat-gap"></div>
+                <div class="seat-group">
+                    <div class="seat reserved"></div>
+                    <div class="seat reserved"></div>
+                    <div class="seat available" data-seat="A6"></div>
+                </div>
+            </div>
+
+            <div class="seat-row split-row">
+                <div class="seat-group">
+                    <div class="seat reserved"></div>
+                    <div class="seat reserved"></div>
+                    <div class="seat available selected" data-seat="9"></div> 
+                    <div class="seat available selected" data-seat="10"></div>
+                </div>
+                <div class="seat-gap"></div>
+                <div class="seat-group">
+                    <div class="seat reserved"></div>
+                    <div class="seat reserved"></div>
+                    <div class="seat reserved"></div>
+                    <div class="seat reserved"></div>
+                </div>
+            </div>
+
+            <div class="seat-row">
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat available" data-seat="C5"></div>
+                <div class="seat available" data-seat="C6"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat available" data-seat="C9"></div>
+                <div class="seat available" data-seat="C10"></div>
+            </div>
+
+            <div class="seat-row">
+                <div class="seat available" data-seat="D1"></div>
+                <div class="seat available" data-seat="D2"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat available" data-seat="D9"></div>
+                <div class="seat available" data-seat="D10"></div>
+            </div>
+
+            <div class="seat-row">
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat available" data-seat="E4"></div>
+                <div class="seat available" data-seat="E5"></div>
+                <div class="seat available" data-seat="E6"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+            </div>
+
+            <div class="seat-row">
+                <div class="seat available" data-seat="F1"></div>
+                <div class="seat available" data-seat="F2"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat available" data-seat="F6"></div>
+                <div class="seat available" data-seat="F7"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+                <div class="seat reserved"></div>
+            </div>
+        </main>
+
+        <div class="seat-legend">
+            <div class="legend-item"><span class="dot dot-available"></span>Available</div>
+            <div class="legend-item"><span class="dot dot-reserved"></span>Reserved</div>
+            <div class="legend-item"><span class="dot dot-selected"></span>Selected</div>
+        </div>
+
+        <footer class="checkout-sheet">
+            <div class="checkout-info">
+                <div class="info-row">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span id="display-datetime">April 23, 2022 • 6 p.m.</span>
+                </div>
+                <div class="info-row">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3h16a2 2 0 0 1 2 2v6a3 3 0 0 0 0 6v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6a3 3 0 0 0 0-6V5a2 2 0 0 1 2-2z"></path></svg>
+                    <span>VIP Section • <span id="display-seats">No seats</span></span>
+                </div>
+                <div class="info-row">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                    <span id="display-total">Total: ₹0</span>
+                </div>
+            </div>
+            
+            <div class="buy-ring">
+                <button id="final-buy-btn" class="buy-btn">Buy</button>
+            </div>
+        </footer>
+        <div class="home-indicator"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const storedDate = localStorage.getItem('movieDate') || 'April 23, 2022';
+            const storedTime = localStorage.getItem('movieTime') || '6 p.m.';
+            document.getElementById('display-datetime').innerText = `${storedDate} • ${storedTime}`;
+
+            const SEAT_PRICE = 250; 
+            let selectedSeats = [];
+            const seatsDisplay = document.getElementById('display-seats');
+            const totalDisplay = document.getElementById('display-total');
+            const availableSeats = document.querySelectorAll('.seat.available');
+            const buyButton = document.getElementById('final-buy-btn');
+            
+            availableSeats.forEach(seat => {
+                if (seat.classList.contains('selected')) {
+                    selectedSeats.push(seat.getAttribute('data-seat'));
+                }
+            });
+
+            updateCheckout();
+
+            availableSeats.forEach(seat => {
+                seat.addEventListener('click', () => {
+                    const seatId = seat.getAttribute('data-seat');
+                    if (seat.classList.contains('selected')) {
+                        seat.classList.remove('selected');
+                        selectedSeats = selectedSeats.filter(id => id !== seatId);
+                    } else {
+                        seat.classList.add('selected');
+                        selectedSeats.push(seatId);
+                    }
+                    updateCheckout();
+                });
+            });
+
+            function updateCheckout() {
+                if (selectedSeats.length > 0) {
+                    selectedSeats.sort((a, b) => a.localeCompare(b, undefined, {numeric: true}));
+                    seatsDisplay.innerText = `Seat ${selectedSeats.join(', ')}`;
+                } else {
+                    seatsDisplay.innerText = 'No seats';
+                }
+
+                const totalCost = selectedSeats.length * SEAT_PRICE;
+                totalDisplay.innerText = `Total: ₹${totalCost}`;
+            }
+
+            buyButton.addEventListener('click', () => {
+                if(selectedSeats.length > 0) {
+                    localStorage.setItem('selectedSeats', selectedSeats.join(', '));
+                    window.location.href = 'tickets.html';
+                } else {
+                    alert("Please select at least one seat to proceed.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
