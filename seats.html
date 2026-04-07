@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Doctor Strange - Seats</title>
+    <title>Seat Booking</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="app-container seats-bg">
         
         <header class="seats-header">
-            <a href="movie1.html" class="icon-btn">
+            <a href="index.html" class="icon-btn">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
             </a>
-            <h2>Choose Seats</h2>
-            <button class="icon-btn">
+            <h1>Choose Seats</h1>
+            <a href="movie1.html"class="icon-btn">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
-            </button>
+            </a>
         </header>
 
         <div class="screen-container">
@@ -44,8 +44,8 @@
                 <div class="seat-group">
                     <div class="seat reserved"></div>
                     <div class="seat reserved"></div>
-                    <div class="seat available selected" data-seat="9"></div> 
-                    <div class="seat available selected" data-seat="10"></div>
+                    <div class="seat available " data-seat="9"></div> 
+                    <div class="seat available " data-seat="10"></div>
                 </div>
                 <div class="seat-gap"></div>
                 <div class="seat-group">
@@ -135,7 +135,6 @@
                 <button id="final-buy-btn" class="buy-btn">Buy</button>
             </div>
         </footer>
-        <div class="home-indicator"></div>
     </div>
 
     <script>
