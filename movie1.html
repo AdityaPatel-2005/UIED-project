@@ -9,7 +9,7 @@
 <body>
     <div class="app-container movie-details-bg">
         
-        <div class="hero-image-overlay" style="background-image: url('fullposter1.jpg');"></div>
+        <div id="dynamic-bg" class="hero-image-overlay" style="background-image: url('fullposter1.jpg');"></div>
 
         <header class="movie-header-actions">
             <a href="index.html" class="icon-btn">
@@ -21,9 +21,9 @@
         </header>
 
         <main class="movie-info-container">
-            <h1 class="movie-title">Doctor Strange</h1>
-            <p class="movie-subtitle">in the Multiverse of Madness</p>
-            <p class="movie-synopsis">
+            <h1 id="dynamic-title" class="movie-title">Doctor Strange</h1>
+            <p id="dynamic-subtitle" class="movie-subtitle">in the Multiverse of Madness</p>
+            <p id="dynamic-synopsis" class="movie-synopsis">
                 Dr. Stephen Strange casts a forbidden spell that opens the doorway to the multiverse, including alternate versions
             </p>
 
@@ -75,6 +75,45 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+
+            // --- MOVIE DATABASE & DYNAMIC LOADING ---
+            const moviesData = {
+                "docstrange": {
+                    title: "Dune",
+                    subtitle: "Part Three",
+                    synopsis: "Emperor Paul Atreides faces the fallout from his ascent to power as political plots and a galaxy-wide holy war endanger the future only he can see.",
+                    bgImage: "poster1.jpg"
+                },
+                "spiderman": {
+                    title: "Spider-Man",
+                    subtitle: "Brand New Day",
+                    synopsis: "A strange new pattern of crimes gives rise to one of the most powerful threats Spider-Man's ever faced.",
+                    bgImage: "poster2.jpg" 
+                },
+                "movie3": {
+                    title: "Dhurandhar",
+                    subtitle: "The Revenge",
+                    synopsis: "A tale of vengeance and justice in a world where nothing is as it seems.",
+                    bgImage: "poster3.jpg" 
+                },
+                "movie4": {
+                    title: "Project Hail Mary",
+                    subtitle: "Dolby Audio",
+                    synopsis: "A science teacher wakes up alone on a spaceship. As his memory returns, he uncovers a mission to stop a mysterious substance killing Earth's sun and that an unexpected friendship may be the key.",
+                    bgImage: "poster4.jpg" 
+                }
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const movieId = urlParams.get('id');
+            const selectedMovie = moviesData[movieId] || moviesData['docstrange'];
+
+            document.getElementById('dynamic-bg').style.backgroundImage = `url('${selectedMovie.bgImage}')`;
+            document.getElementById('dynamic-title').innerText = selectedMovie.title;
+            document.getElementById('dynamic-subtitle').innerText = selectedMovie.subtitle;
+            document.getElementById('dynamic-synopsis').innerText = selectedMovie.synopsis;
+
+            // --- EXISTING CODE: DATE/TIME SELECTION ---
             const dateCards = document.querySelectorAll('.date-card');
             const timeCards = document.querySelectorAll('.time-card');
             const reservationBtn = document.getElementById('reservation-btn');
@@ -117,6 +156,10 @@
                 if (!reservationBtn.disabled) {
                     localStorage.setItem('movieDate', selectedDateText);
                     localStorage.setItem('movieTime', selectedTimeText);
+                    
+                    // NEW: Save the specific movie image so tickets.html can grab it
+                    localStorage.setItem('movieImage', selectedMovie.bgImage);
+                    
                     window.location.href = 'seats.html'; 
                 }
             });
