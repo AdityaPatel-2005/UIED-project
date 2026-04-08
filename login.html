@@ -13,8 +13,6 @@
         <div class="login-wrapper">
             <div class="login-card">
                 
-                
-                
                 <div class="form-group">
                     <br><br><br>
                     <label class="form-label">Phone Number</label>
@@ -22,7 +20,7 @@
                         <svg class="phone-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                         </svg>
-                        <input type="tel" class="login-input" placeholder="">
+                        <input type="tel" id="phone-input" class="login-input" placeholder="">
                     </div>
                 </div>
 <br><br><br>
@@ -48,7 +46,7 @@
                     </div>
                 </div>
 
-                <button class="login-action-btn" onclick="window.location.href='index.html'">LOG IN</button>
+                <button id="login-btn" class="login-action-btn">LOG IN</button>
 
             </div>
         </div>
@@ -58,7 +56,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const otpInputs = document.querySelectorAll('.otp-input');
+            const phoneInput = document.getElementById('phone-input');
+            const loginBtn = document.getElementById('login-btn');
             
+            // --- OTP UI Behavior ---
             otpInputs.forEach((input, index) => {
                 input.addEventListener('input', (e) => {
                     const line = input.nextElementSibling;
@@ -82,6 +83,29 @@
                         otpInputs[index - 1].focus();
                     }
                 });
+            });
+
+            // --- Login Validation Logic ---
+            loginBtn.addEventListener('click', () => {
+                const phoneValue = phoneInput.value.trim();
+                
+                // Count how many OTP boxes have a value
+                let otpFilledCount = 0;
+                otpInputs.forEach(input => {
+                    if (input.value.trim() !== '') {
+                        otpFilledCount++;
+                    }
+                });
+
+                // Check conditions
+                if (phoneValue === '') {
+                    alert('Please enter your Phone Number.');
+                } else if (otpFilledCount < 4) {
+                    alert('Please enter the complete 4-digit OTP.');
+                } else {
+                    // Success! Redirect to home page
+                    window.location.href = 'index.html';
+                }
             });
         });
     </script>
